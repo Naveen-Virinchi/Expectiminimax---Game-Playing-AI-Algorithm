@@ -10,11 +10,11 @@ The game has two speciﬁc variants. In Deterministic IJK, the new a or A at the
 
 Your goal is to write AI clode that plays these two variants of IJK well. We’ve prepared skeleton code to help you. You can run the code like this:
 
-./ijk.py [uppercase-player] [lowercase-player] [mode]
+./IJK.py [uppercase-player] [lowercase-player] [mode]
 
 where uppercase-player and lowercase-player are each either ai or human, and mode is either det for deterministic IJK or nondet for nondeterministic IJK. These commands let you set up various types of games. For example, if you (a human) want to play a deterministic game against the ai, you could type:
 
-./ijk.py human ai det
+./IJK.py human ai det
 
 Similarly, you can set up games between AIs or between humans.
 
@@ -53,7 +53,7 @@ We want to keep adjacent tiles as close in value as possible, so we will give pe
 
 This heuristic tries to ensure that the values of the tiles are all either increasing or decreasing along both the left/right and up/down directions. It will typically prevent smaller valued tiles from getting orphaned and will keep the board very organized, with smaller tiles cascading in and filling up into the larger tiles.
 
-[Our reference for monotonicity](http://cs229.stanford.edu/proj2016/report/NieHouAn-AIPlays2048-report.pdf)
+[Reference for monotonicity](http://cs229.stanford.edu/proj2016/report/NieHouAn-AIPlays2048-report.pdf)
 
 Based on observations and expertise, it is concluded that the game is heading in the positive direction if the highest valued tile is in the corner and the other tiles are linearly decreases as it moves away from the highest tile. Thus, there are four different best possibilities : Maximum tile is at the (1) Down -left (2) Top-left (3) Top-Right and (4) Down-Right corner. In order to compute the score, we can multiply the current configuration with a gradient (weighted) matrix associated with each of the possible cases. The gradient matrix designed for this case is as given.
 
@@ -98,9 +98,9 @@ Maximizer Turn A, calculate max(alpha,2) = alpha. Then it’s done. return 3 as 
 
 
 
-**Minimaxab** : Implements the Minimax algorithm with pruning (Depth limit is set as 6) for deterministic and Expectiminimax for non deterministic
+**minimaxab** : Implements the Minimax algorithm with pruning (Depth limit is set as 6) for deterministic and Expectiminimax for non deterministic
 
 
 
-**Helper** : All utility functions created for this game are written here. This includes the eval function which evaluates the heuristic score for a given configuration
+**helper** : All utility functions created for this game are written here. This includes the eval function which evaluates the heuristic score for a given configuration
 
